@@ -1,4 +1,4 @@
-package com.example.diccionario.BinaryTreeLogic;
+package BinaryTreeLogic;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -51,11 +51,11 @@ public class BinaryTree <T> {
         return 0;
     }
 
-    public int heightNode(TreeNode node) {
+    public int heightNode(TreeNode<T> node) {
         return 0;
     }
 
-    private int height(TreeNode node, int aux) {
+    private int height(TreeNode<T> node, int aux) {
         return 0;
     }
 
@@ -63,7 +63,7 @@ public class BinaryTree <T> {
         return 0;
     }
 
-    private int weight(TreeNode node) {
+    private int weight(TreeNode<T> node) {
         return 0;
     }
 
@@ -72,7 +72,7 @@ public class BinaryTree <T> {
     }
 
     public boolean isLeaf(TreeNode node) {
-        return true;
+        return (node.getRight()==null && node.getLeft()==null);
     }
 
     public byte gradeNode(TreeNode node) {
@@ -99,16 +99,30 @@ public class BinaryTree <T> {
     }
 
     public ArrayList<T> listInsort() {
-        return null;
-    }
-    private void insort(TreeNode node) {
+        list = new ArrayList<>();
+        insort( root );
 
+        return list;
+    }
+    private void insort(TreeNode<T> node) {
+        if( node != null ){
+            insort( node.getLeft());
+            list.add(node.getInfo());
+            insort( node.getRight());
+        }
     }
     public ArrayList<T> listPosort() {
-        return null;
-    }
-    private void posort(TreeNode node) {
+        list = new ArrayList<>();
+        posort( root );
 
+        return list;
+    }
+    private void posort(TreeNode<T> node) {
+        if( node != null ){
+            posort( node.getLeft());
+            posort( node.getRight());
+            list.add(node.getInfo());
+        }
     }
     public ArrayList<T> listAmplitudeDown() {
         list = new ArrayList<T>();

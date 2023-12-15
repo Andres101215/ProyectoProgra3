@@ -1,4 +1,4 @@
-package com.example.diccionario.BinaryTreeLogic;
+package BinaryTreeLogic;
 
 public class TreeNode <T>{
     private T info;
