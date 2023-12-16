@@ -48,23 +48,35 @@ public class BinaryTree <T> {
     }
 
     public int heighTree() {
-        return 0;
+        return height(root); 
     }
 
     public int heightNode(TreeNode<T> node) {
-        return 0;
+        return height(node);
     }
 
-    private int height(TreeNode<T> node, int aux) {
-        return 0;
+    private int height(TreeNode<T> node) {
+        if (node == null) {
+            return 0;
+        } else {
+            int leftHeight = height(node.getLeft());
+            int rightHeight = height(node.getRight());
+            return 1 + Math.max(leftHeight, rightHeight);
+        }
     }
 
     public int weightTree() {
-        return 0;
+        return weight(root);
     }
 
     private int weight(TreeNode<T> node) {
-        return 0;
+        if (node == null) {
+            return 0;
+        } else {
+            int leftWeight = weight(node.getLeft());
+            int rightWeight = weight(node.getRight());
+            return 1 + leftWeight + rightWeight;
+        }
     }
 
     public int levelNode(TreeNode<T> node) {
@@ -154,23 +166,63 @@ public class BinaryTree <T> {
         }
         return null;
     }
-    public T deleteNode(TreeNode node) {
-        switch (gradeNode(node)){
+
+    public T deleteNode(TreeNode<T> node) {
+        switch (gradeNode(node)) {
             case 0:
                 return deleteSheet(node);
             case 1:
-                return  deleteWithSon(node);
+                return deleteWithSon(node);
             default:
                 return deleteSons(node);
         }
     }
-    private T deleteSheet(TreeNode node) {
-        return null;
+
+    private T deleteSheet(TreeNode<T> node) {
+        TreeNode<T> father = findFather(node);
+        if (father != null) {
+            if (father.getLeft() == node) {
+                father.setLeft(null);
+            } else {
+                father.setRight(null);
+            }
+        } else {
+            root = null;
+        }
+        return node.getInfo();
     }
-    private T deleteWithSon(TreeNode node) {
-        return null;
+
+    private T deleteWithSon(TreeNode<T> node) {
+        TreeNode<T> father = findFather(node);
+        TreeNode<T> child = (node.getLeft() != null) ? node.getLeft() : node.getRight();
+
+        if (father != null) {
+            if (father.getLeft() == node) {
+                father.setLeft(child);
+            } else {
+                father.setRight(child);
+            }
+        } else {
+            root = child;
+        }
+        return node.getInfo();
     }
-    private T deleteSons(TreeNode node) {
-        return null;
+
+    private T deleteSons(TreeNode<T> node) {
+        TreeNode<T> successor = findSuccessor(node);
+        T successorValue = successor.getInfo();
+        deleteNode(successor);
+
+        node.setInfo(successorValue);
+        return successorValue;
+    }
+
+    private TreeNode<T> findSuccessor(TreeNode<T> node) {
+        TreeNode<T> successor = node.getRight();
+
+        while (successor.getLeft() != null) {
+            successor = successor.getLeft();
+        }
+        return successor;
     }
 }
