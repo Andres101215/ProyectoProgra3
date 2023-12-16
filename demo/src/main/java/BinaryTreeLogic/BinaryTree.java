@@ -1,8 +1,6 @@
 package BinaryTreeLogic;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.*;
 
 public class BinaryTree <T> {
     private Comparator<T> comparator;
@@ -48,7 +46,7 @@ public class BinaryTree <T> {
     }
 
     public int heighTree() {
-        return height(root); 
+        return height(root);
     }
 
     public int heightNode(TreeNode<T> node) {
@@ -102,11 +100,11 @@ public class BinaryTree <T> {
         return list;
     }
 
-    private void presort(TreeNode node) {
-        if(root != null){
-            list.add((T) root.getInfo());
-            presort(root.getLeft());
-            presort(root.getRight());
+    private void presort(TreeNode<T> node) {
+        if (node != null) {
+            list.add(node.getInfo());
+            presort(node.getLeft());
+            presort(node.getRight());
         }
     }
 
@@ -137,31 +135,63 @@ public class BinaryTree <T> {
         }
     }
     public ArrayList<T> listAmplitudeDown() {
-        list = new ArrayList<T>();
+        ArrayList<T> result = new ArrayList<>();
         ArrayDeque<TreeNode<T>> tail = new ArrayDeque<>();
-        tail.add( root );
+        tail.add(root);
         TreeNode<T> aux = null;
-        while( !tail.isEmpty( ) ){
+
+        while (!tail.isEmpty()) {
             aux = tail.poll();
-            if( aux.getLeft() != null ){
-                tail.add( aux.getLeft());
+            if (aux.getRight() != null) {
+                tail.add(aux.getRight());
             }
-            if( aux.getRight() != null ){
-                tail.add( aux.getRight());
+            if (aux.getLeft() != null) {
+                tail.add(aux.getLeft());
             }
-            list.add( aux.getInfo());
+            result.add(aux.getInfo());
         }
 
-        return list;
+        return result;
     }
+
     public ArrayList<T> listAmplitudeTop() {
-        return null;
+        ArrayList<T> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+
+        Queue<TreeNode<T>> queue = new ArrayDeque<>();
+        Stack<T> stack = new Stack<>();
+
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode<T> current = queue.poll();
+            stack.push(current.getInfo());
+
+            if (current.getLeft() != null) {
+                queue.offer(current.getLeft());
+            }
+            if (current.getRight() != null) {
+                queue.offer(current.getRight());
+            }
+        }
+
+        while (!stack.isEmpty()) {
+            result.add(stack.pop());
+        }
+
+        return result;
     }
+
     public TreeNode<T> findFather(TreeNode<T> node) {
-        if(node!= root ){
-            TreeNode<T> aux=root;
-            while(aux.getLeft()!=node && aux.getRight()!=node){
-                aux=comparator.compare(node.getInfo(),aux.getInfo())<0 ? aux.getLeft():aux.getRight();
+        if (node != root) {
+            TreeNode<T> aux = root;
+            while (aux != null) {
+                if ((aux.getLeft() != null && aux.getLeft() == node) || (aux.getRight() != null && aux.getRight() == node)) {
+                    return aux;
+                }
+                aux = comparator.compare(node.getInfo(), aux.getInfo()) < 0 ? aux.getLeft() : aux.getRight();
             }
         }
         return null;
