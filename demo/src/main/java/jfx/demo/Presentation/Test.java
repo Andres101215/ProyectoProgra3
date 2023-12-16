@@ -7,5 +7,8 @@ public class Test {
         Management management = new Management();
         System.out.println(management.generateAscciCode("AA"));
         System.out.println(management.generatePosition("Zndres"));
+        System.out.println(management.ConvertFirstToUppercase("andres"));
+
+
     }
 }

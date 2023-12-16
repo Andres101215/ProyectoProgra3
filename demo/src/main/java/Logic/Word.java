@@ -1,13 +1,13 @@
 package Logic;
 
 public class Word {
-    private String id;
+    private int id;
     private String word;
     private String definition;
 
     private String translate;
 
-    public Word(String id, String word, String definition, String translate) {
+    public Word(int id, String word, String definition, String translate) {
         this.id = id;
         this.word = word;
         this.definition = definition;
@@ -17,11 +17,11 @@ public class Word {
     public Word() {
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
