@@ -6,7 +6,6 @@ import javafx.stage.Stage;
 
 public class Runner extends Application {
 
-
     Start main= new Start();
 
     public static void main(String[] args) {
