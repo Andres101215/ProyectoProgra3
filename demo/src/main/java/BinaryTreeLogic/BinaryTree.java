@@ -45,6 +45,10 @@ public class BinaryTree <T> {
         return aux;
     }
 
+    public void modifyinfo(TreeNode<T> node,T newinfo){
+        node.setInfo(newinfo);
+    }
+
     public int heighTree() {
         return height(root);
     }

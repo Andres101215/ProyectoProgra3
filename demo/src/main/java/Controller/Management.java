@@ -86,6 +86,10 @@ public class Management{
     public ArrayList<Word> returnlistByletter(int pos){
         return list[pos].listInsort();
     }
+    public boolean modifyword(int pos,int id,Word word1){
+        list[pos].modifyinfo(list[pos].findNode(findInfoById(pos,id)),word1);
+        return true;
+    }
 
 
 }
