@@ -8,7 +8,5 @@ public class Test {
         System.out.println(management.generateAscciCode("AA"));
         System.out.println(management.generatePosition("Zndres"));
         System.out.println(management.ConvertFirstToUppercase("andres"));
-
-
     }
 }
