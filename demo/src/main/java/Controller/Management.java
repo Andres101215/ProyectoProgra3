@@ -5,7 +5,7 @@ import Logic.Word;
 import java.util.ArrayList;
 
 
-public class Management {
+public class Management{
     private Word word;
    private  BinaryTree<Word> bts;
     private BinaryTree<Word> [] list;
