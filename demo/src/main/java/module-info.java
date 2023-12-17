@@ -3,6 +3,6 @@ module jfx.demo {
     requires javafx.fxml;
     requires javafx.media;
                             
-    opens jfx.demo to javafx.fxml;
+    opens jfx.demo.Presentation to javafx.fxml;
     exports jfx.demo.Presentation;
 }
