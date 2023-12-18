@@ -86,15 +86,15 @@ public class MenuOptions extends Application {
         Button botonFlotante2 = new Button();
         botonFlotante.getStyleClass().add("boton-flotante");
         botonFlotante.setGraphic(iconoAgregar);
-        botonFlotante.getStyleClass().add("boton-flotante");
-        botonFlotante.setGraphic(iconobuscar);
+        botonFlotante2.getStyleClass().add("boton-flotante");
+        botonFlotante2.setGraphic(iconobuscar);
 
         StackPane stackPane = new StackPane();
         stackPane.getChildren().addAll(tabla, botonFlotante,botonFlotante2);
         StackPane.setAlignment(botonFlotante, Pos.BOTTOM_RIGHT);
         StackPane.setAlignment(botonFlotante2, Pos.BOTTOM_RIGHT);
         StackPane.setMargin(botonFlotante, new Insets(15));
-        StackPane.setMargin(botonFlotante, new Insets(15));
+        StackPane.setMargin(botonFlotante, new Insets(10));
         root.setCenter(stackPane); // Agregar la StackPane al centro del BorderPane
 
         botonFlotante.setOnAction(event -> {
