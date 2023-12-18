@@ -7,29 +7,27 @@ import java.util.ArrayList;
 
 public class Management{
     private Word word;
-   private  BinaryTree<Word> bts;
     private BinaryTree<Word> [] list;
 
     public Management(){
         word=new Word();
-        bts = new BinaryTree<>((word1,word2)->Integer.compare(word1.getId(),word2.getId()));
         list= new BinaryTree[26];
         initialize();
     }
 
     public void initialize(){
         for(int i=0;i<list.length;i++){
-            list[i]=bts;
+            list[i]=new BinaryTree<>((word1, word2) -> Integer.compare(word1.getId(), word2.getId()));
         }
     }
 
-    public String generateAscciCode(String word){
+    public int generateAscciCode(String word){
         int aux1=0;
         for (int i = 0; i < word.length(); i++) {
             char caracter = word.charAt(i);
             aux1 += (int) caracter;
         }
-        return String.valueOf(aux1);
+        return aux1;
     }
     public int generatePosition(String word){
       String aux=word.substring(0,1);
@@ -90,6 +88,11 @@ public class Management{
         list[pos].modifyinfo(list[pos].findNode(findInfoById(pos,id)),word1);
         return true;
     }
-
-
+    public ArrayList<Word> returnlist(){
+        ArrayList<Word> newlistWords = new ArrayList<>();
+        for (int i = 0; i < list.length; i++) {
+            newlistWords.addAll(list[i].listInsort());
+        }
+        return newlistWords;
+    }
 }

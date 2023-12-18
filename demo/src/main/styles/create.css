@@ -1,0 +1,49 @@
+.Window-background{
+    -fx-background-color: #f5ebb1;
+}
+
+
+.container {
+    -fx-background-color: rgb(255, 255, 255); /* Color de fondo del contenedor (blanco en este ejemplo) */
+    -fx-background-radius: 2%; /* Redondeo de bordes horizontal y vertical del 5% */
+    -fx-font-size: 13px; /* Tamaño de la fuente de 20px */
+}
+
+.button-objective {
+    /* Estilo predeterminado del botón */
+    -fx-background-color: rgb(19, 109, 19);
+   
+}
+.container > HBox {
+    -fx-spacing: 10px; /* Establece el espacio entre los nodos en 10 píxeles */
+}
+
+
+.button-EliminateObjective{
+    -fx-background-color: rgb(158, 14, 14);
+}
+
+.button-enviar {
+    -fx-background-color: #000000;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #F4D03F;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 30px;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+/* Estilo en hover */
+.button-enviar:hover {
+    -fx-background-color: rgb(238, 214, 0);
+    -fx-text-fill: rgb(0, 0, 0);
+}
+
+/* Agrega un estilo para el mensaje de éxito */
+.success-message {
+    -fx-background-color: #248d2888; /* Color de fondo verde */
+    -fx-text-fill: rgb(21, 126, 12); /* Color del texto en blanco */
+    -fx-padding: 12px; /* Relleno interior */
+    -fx-background-radius: 5px; /* Aumentar el radio de borde */
+    -fx-font-size: 14px;
+}
