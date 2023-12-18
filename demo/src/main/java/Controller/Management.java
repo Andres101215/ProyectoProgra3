@@ -30,6 +30,7 @@ public class Management{
         return aux1;
     }
     public int generatePosition(String word){
+        word=ConvertFirstToUppercase(word);
       String aux=word.substring(0,1);
       int aux1=0;
         for (int i = 0; i < aux.length(); i++) {
@@ -62,6 +63,7 @@ public class Management{
     }
 
     public Word createWord(int id, String word1, String definition, String translate){
+        word1=ConvertFirstToUppercase(word1);
         word=new Word(id,word1,definition,translate);
         return word;
     }
@@ -74,7 +76,7 @@ public class Management{
         return true;
     }
     public Word findInfoById(int pos,int id){
-        for (Word  aux: list[pos].listAmplitudeDown()) {
+        for (Word  aux: list[pos].listPosort()) {
             if(aux.getId()==id){
                 return aux;
             }
@@ -82,6 +84,7 @@ public class Management{
         return null;
     }
     public ArrayList<Word> returnlistByletter(int pos){
+
         return list[pos].listInsort();
     }
     public boolean modifyword(int pos,int id,Word word1){

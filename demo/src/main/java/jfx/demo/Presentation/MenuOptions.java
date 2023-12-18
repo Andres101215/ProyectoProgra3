@@ -53,7 +53,7 @@ public class MenuOptions extends Application {
         ObservableList<Word> tableWords = FXCollections.observableArrayList(man.returnlist());
 
         // Crear una tabla y columnas
-        TableColumn<Word, String> IdColumn = new TableColumn<>("Id");
+        TableColumn<Word, Integer> IdColumn = new TableColumn<>("Id");
         TableColumn<Word, String> wordColumn = new TableColumn<>("Palabra");
         TableColumn<Word, String> definitionColumn = new TableColumn<>("Definicion");
         TableColumn<Word, String> translateColumn = new TableColumn<>("Traduccion");
@@ -113,7 +113,6 @@ public class MenuOptions extends Application {
     }
 
     public class BotonCelda extends TableCell<Word, Void> {
-        // private final Button btnVer = new Button();
         private final Button btnEliminar = new Button();
         private final Button btnModificar = new Button();
 
@@ -141,8 +140,21 @@ public class MenuOptions extends Application {
             btnModificar.getStyleClass().add("boton-modificar");
 
             btnEliminar.setOnAction(event -> {
+                Word word = getTableView().getItems().get(getIndex());
+                // Mostrar una ventana emergente de confirmación
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Confirmar Eliminacion");
+                alert.setHeaderText(null);
+                alert.setContentText("Esta seguro que desea eliminar esta palabra?");
 
-            });
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    man.deleteBinaryTreeWord(man.generatePosition(man.ConvertFirstToUppercase(word.getWord())), word.getId());
+                    // Actualiza la tabla después de eliminar el grupo
+                    tabla.getItems().remove(word);
+                    alert.setContentText("Se elimino correctamente");
+                }
+                });
 
             btnModificar.setOnAction(event -> {
 
