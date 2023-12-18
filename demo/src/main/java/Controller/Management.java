@@ -22,6 +22,7 @@ public class Management{
     }
 
     public int generateAscciCode(String word){
+        word=ConvertFirstToUppercase(word);
         int aux1=0;
         for (int i = 0; i < word.length(); i++) {
             char caracter = word.charAt(i);
@@ -84,7 +85,6 @@ public class Management{
         return null;
     }
     public ArrayList<Word> returnlistByletter(int pos){
-
         return list[pos].listInsort();
     }
     public boolean modifyword(int pos,int id,Word word1){
