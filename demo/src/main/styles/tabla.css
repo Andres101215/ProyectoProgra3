@@ -13,16 +13,6 @@
     -fx-text-fill: #D4AF37; /* Texto dorado */
 }
 
-/* Estilo para las celdas de la tabla */
-.table-row-cell {
-    -fx-background-color:#E9E9E9; /* Cambia el color de fondo de las celdas */
-}
-
-/* Estilo para las celdas alternas de la tabla */
-.table-row-cell:odd {
-    -fx-background-color: white; /* Cambia el color de fondo de las celdas alternas */
-}
-
 /* Estilo para las celdas seleccionadas de la tabla */
 .table-row-cell:selected {
     -fx-background-color: #2196F3; /* Cambia el color de fondo de las celdas seleccionadas */
