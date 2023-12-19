@@ -113,6 +113,7 @@ public class MenuOptions extends Application {
         botonFlotante2.setOnAction(event -> {
             AddOptions addOptions = new AddOptions(man);
             addOptions.mostrarVentana();
+            primaryStage.close();
 
 
         });
