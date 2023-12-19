@@ -2,6 +2,29 @@
 .boton-ver {
     -fx-background-color: rgb(112, 108, 108);
 }
+/* styles.css */
+
+/* Estilo para el encabezado de la tabla */
+.table-view .column-header {
+    -fx-background-color: #4CAF50; /* Cambia el color de fondo del encabezado */
+    -fx-text-fill: white; /* Cambia el color del texto del encabezado */
+}
+
+/* Estilo para las celdas de la tabla */
+.table-row-cell {
+    -fx-background-color: #E0E0E0; /* Cambia el color de fondo de las celdas */
+}
+
+/* Estilo para las celdas alternas de la tabla */
+.table-row-cell:odd {
+    -fx-background-color: #F0F0F0; /* Cambia el color de fondo de las celdas alternas */
+}
+
+/* Estilo para las celdas seleccionadas de la tabla */
+.table-row-cell:selected {
+    -fx-background-color: #2196F3; /* Cambia el color de fondo de las celdas seleccionadas */
+    -fx-text-fill: white; /* Cambia el color del texto de las celdas seleccionadas */
+}
 
 /* Estilo normal para el botón de eliminar */
 .boton-eliminar {
@@ -14,7 +37,7 @@
 }
 
 .boton-flotante {
-    -fx-background-color: #378106;
+    -fx-background-color: #000000;
     -fx-background-radius: 45%; /* Hace que el botón sea circular */
     -fx-min-width: 45px; /* Ancho mínimo personalizado */
     -fx-min-height: 45px; /* Altura mínima personalizada */

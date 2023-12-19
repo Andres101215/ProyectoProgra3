@@ -33,7 +33,7 @@ public class LetterTable extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Letras por " + letra + " :");
-        Image iconImage = new Image("file:" + "demo/src/prograIconos/logoUptc.png");
+        Image iconImage = new Image("file:" + "demo/src/prograIconos/libro.png");
         primaryStage.getIcons().add(iconImage);
 
         ObservableList<Word> tableWords = FXCollections.observableArrayList(man.returnlistByletter(man.generatePosition(letra)));

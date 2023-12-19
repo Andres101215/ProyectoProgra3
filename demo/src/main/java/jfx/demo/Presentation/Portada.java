@@ -33,7 +33,7 @@ public class Portada extends Application {
         // Configurar la imagen de fondo
         Image backgroundImage = new Image("file:" + "demo/src/prograIconos/Libro1.jpg");
         ImageView backgroundImageView = new ImageView(backgroundImage);
-        Image iconImage = new Image("file:" + "demo/src/prograIconos/logoUptc.png");
+        Image iconImage = new Image("file:" + "demo/src/prograIconos/libro.png");
         primaryStage.getIcons().add(iconImage);
 
         // Configurar el título en la parte superior
@@ -52,7 +52,7 @@ public class Portada extends Application {
         });
 
         // Agregar un texto en la mitad
-        Label middleTextLabel = new Label("Andres Puentes y Luis Robelto");
+        Label middleTextLabel = new Label("Andres Felipe Puentes y Luis Esteban Robelto");
         middleTextLabel.getStyleClass().add("middle-text");
 
         StackPane stackPane = new StackPane();

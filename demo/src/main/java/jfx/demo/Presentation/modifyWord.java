@@ -43,7 +43,7 @@ public class modifyWord extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Modificar Palabra");
         // Configurar el ícono de la ventana
-        Image iconImage = new Image("file:" + "demo/src/prograIconos/descarga.jpg");
+        Image iconImage = new Image("file:" + "demo/src/prograIconos/libro.png");
         primaryStage.getIcons().add(iconImage);
 
         VBox mainVBox = new VBox(15); // Espacio entre elementos

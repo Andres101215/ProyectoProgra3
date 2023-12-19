@@ -46,7 +46,7 @@ public class MenuOptions extends Application {
 
         primaryStage.setTitle("Diccionario");
         // Configurar el ícono de la ventana
-        Image iconImage = new Image("file:" + "demo/src/prograIconos/logoUptc.png");
+        Image iconImage = new Image("file:" + "demo/src/prograIconos/libro.png");
 
         primaryStage.getIcons().add(iconImage);
 
@@ -72,6 +72,9 @@ public class MenuOptions extends Application {
         TableColumn<Word, Void> accionesColumna = new TableColumn<>("Actions");
         accionesColumna.setCellFactory(param -> new BotonCelda());
         tabla.getColumns().add(accionesColumna);
+
+        tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
 
         tabla.setItems(tableWords);
         // Crear un botón flotante
@@ -115,7 +118,7 @@ public class MenuOptions extends Application {
         });
 
         // Crear la escena y mostrarla
-        Scene scene = new Scene(root, 1000, 600); // Usar el BorderPane como nodo raíz
+        Scene scene = new Scene(root, 700, 600); // Usar el BorderPane como nodo raíz
         scene.getStylesheets().add(new File("demo/src/main/styles/tabla.css").toURI().toString());
         primaryStage.setScene(scene);
         primaryStage.show();
