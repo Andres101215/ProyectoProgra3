@@ -1,0 +1,26 @@
+.button-enviar {
+    -fx-background-color: #0f0505;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #F4D03F;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 40px;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-font-family: "Times New Roman";
+
+}
+
+.button-enviar:hover .text {
+    -fx-effect: dropshadow(gaussian, rgb(255, 232, 28), 10, 0, 0, 0);
+}
+
+
+
+.middle-text {
+    -fx-font-family: "Times New Roman";
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-text-fill: #0f0505;
+    -fx-padding: 5; /* Ajusta el padding según tus necesidades */
+}
