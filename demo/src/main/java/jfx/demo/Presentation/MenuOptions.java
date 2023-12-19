@@ -31,6 +31,7 @@ import javafx.stage.Stage;
 
 public class MenuOptions extends Application {
     private TableView<Word> tabla = new TableView<Word>();
+
     private Management man;
 
 
@@ -93,8 +94,8 @@ public class MenuOptions extends Application {
         stackPane.getChildren().addAll(tabla, botonFlotante,botonFlotante2);
         StackPane.setAlignment(botonFlotante, Pos.BOTTOM_RIGHT);
         StackPane.setAlignment(botonFlotante2, Pos.BOTTOM_RIGHT);
-        StackPane.setMargin(botonFlotante, new Insets(15));
-        StackPane.setMargin(botonFlotante, new Insets(10));
+        StackPane.setMargin(botonFlotante, new Insets(0, 10, 58, 0));
+        StackPane.setMargin(botonFlotante2, new Insets(0, 10, 10, 0));
         root.setCenter(stackPane); // Agregar la StackPane al centro del BorderPane
 
         botonFlotante.setOnAction(event -> {
@@ -102,6 +103,8 @@ public class MenuOptions extends Application {
         });
 
         botonFlotante2.setOnAction(event -> {
+            AddOptions addOptions = new AddOptions(man);
+            addOptions.mostrarVentana();
 
         });
 
