@@ -6,10 +6,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -48,7 +45,19 @@ public class AddOptions extends Application {
             buscarButton.setOnAction(event -> {
                 String palabraBuscada = palabraTextField.getText();
 
+                if(man.findWordByWord(palabraBuscada)!=null) {
 
+                    mostrarNuevaVentana(man.findWordByWord(palabraBuscada), man);
+                    primaryStage.close();
+                }else{
+
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Palabra no encontrada");
+                    alert.setContentText("La palabra '" + palabraBuscada + "' no coincide con ninguna del diccionario.");
+                    alert.showAndWait();
+
+                }
             });
 
             HBox busquedaBox = new HBox(10, palabraTextField, buscarButton);
@@ -113,6 +122,47 @@ public class AddOptions extends Application {
 
 
         }
+
+    private void mostrarNuevaVentana(Word palabra, Management man) {
+        Stage nuevaVentana = new Stage();
+        nuevaVentana.setTitle("La palabra coincide con: ");
+
+        Image iconImage = new Image("file:" + "demo/src/prograIconos/libro.png");
+        nuevaVentana.getIcons().add(iconImage);
+
+        Label uno = new Label("Palabra:");
+        uno.setStyle("-fx-font-weight: bold;");
+
+        Label dos = new Label(palabra.getWord());
+
+        Label tres = new Label("Definición:");
+        tres.setStyle("-fx-font-weight: bold;");
+
+        Label cuatro = new Label(palabra.getDefinition());
+
+        Label cinco = new Label("Traducción:");
+        cinco.setStyle("-fx-font-weight: bold;");
+
+        Label seis = new Label(palabra.getTranslate());
+
+        VBox root = new VBox(10);
+        root.setPadding(new Insets(10));
+        root.setAlignment(Pos.TOP_LEFT);
+
+        root.getChildren().addAll(uno, dos, tres, cuatro, cinco, seis);
+
+        Scene nuevaVentanaScene = new Scene(root, 300, 200);
+
+        nuevaVentana.setScene(nuevaVentanaScene);
+        nuevaVentana.show();
+
+        nuevaVentana.setOnCloseRequest(event -> {
+
+           AddOptions ad= new AddOptions(man);
+           ad.mostrarVentana();
+
+        });
+    }
     public void mostrarVentana() {
         Stage stage = new Stage();
         try {

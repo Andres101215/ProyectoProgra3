@@ -1,5 +1,6 @@
 package Controller;
 import BinaryTreeLogic.BinaryTree;
+import BinaryTreeLogic.TreeNode;
 import Logic.Word;
 
 import java.util.ArrayList;
@@ -110,5 +111,23 @@ public class Management{
         }
         return false;
     }
+    public Word findWordByWord( String palabra) {
+        palabra = ConvertFirstToUppercase(palabra);
+        int pos = generateAscciCode(String.valueOf(palabra.charAt(0)));
+
+        BinaryTree<Word> bt = list[pos-65];
+
+        ArrayList<Word> sortedList = bt.listInsort();
+
+        for (Word word : sortedList) {
+            if (word.getWord().equalsIgnoreCase(palabra)) {
+                return word;
+            }
+        }
+
+        return null;
+    }
+
+
 
 }

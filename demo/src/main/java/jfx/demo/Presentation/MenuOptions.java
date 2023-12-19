@@ -119,7 +119,7 @@ public class MenuOptions extends Application {
         });
 
         // Crear la escena y mostrarla
-        Scene scene = new Scene(root, 700, 600); // Usar el BorderPane como nodo raíz
+        Scene scene = new Scene(root, 900, 600); // Usar el BorderPane como nodo raíz
 
         primaryStage.setOnCloseRequest(event -> {
             Portada pt= new Portada(man);

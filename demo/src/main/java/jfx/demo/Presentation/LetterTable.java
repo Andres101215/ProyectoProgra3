@@ -72,16 +72,17 @@ public class LetterTable extends Application {
 
         botonFlotante.setOnAction(event -> {
 
-            MenuOptions mn= new MenuOptions(man);
-            mn.mostrarVentana();
+            AddOptions ad= new AddOptions(man);
+            ad.mostrarVentana();
             primaryStage.close();
 
         });
 
         Scene scene = new Scene(root, 700, 600);
         primaryStage.setOnCloseRequest(event -> {
-            MenuOptions mn= new MenuOptions(man);
-            mn.mostrarVentana();
+            AddOptions ad= new AddOptions(man);
+            ad.mostrarVentana();
+            primaryStage.close();
         });
 
         scene.getStylesheets().add(new File("demo/src/main/styles/tabla.css").toURI().toString());
