@@ -101,12 +101,12 @@ public class MenuOptions extends Application {
         root.setCenter(stackPane); // Agregar la StackPane al centro del BorderPane
 
         botonFlotante.setOnAction(event -> {
-            int code = man.generateAscciCode(man.ConvertFirstToUppercase("andres"));
-            Word newWord = man.createWord(code, "andres", "esto quiere decir que tiene muchas cosas que decir", "translate");
 
-            // Agregar la nueva palabra a la lista y actualizar la tabla
-            tableWords.add(newWord);
-            man.addBinaryTreeWord(man.generatePosition(man.ConvertFirstToUppercase(newWord.getWord())), newWord);
+            AddWord aW= new AddWord(man);
+            aW.mostrarVentana();
+            primaryStage.close();
+
+
         });
 
 
@@ -202,6 +202,10 @@ public class MenuOptions extends Application {
                 setGraphic(botonesContainer);
             }
         }
+    }
+
+    public void addButton(Management man, Word newWord){
+
     }
 
     public void mostrarVentana() {
