@@ -106,6 +106,7 @@ public class MenuOptions extends Application {
             AddOptions addOptions = new AddOptions(man);
             addOptions.mostrarVentana();
 
+
         });
 
         // Crear la escena y mostrarla
@@ -181,6 +182,14 @@ public class MenuOptions extends Application {
                 botonesContainer.setSpacing(5);
                 setGraphic(botonesContainer);
             }
+        }
+    }
+    public void mostrarVentana() {
+        Stage stage = new Stage();
+        try {
+            start(stage);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

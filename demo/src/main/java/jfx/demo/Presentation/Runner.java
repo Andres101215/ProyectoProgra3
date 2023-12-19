@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class Runner extends Application {
 
     Management man = new Management();
-    MenuOptions main= new MenuOptions(man);
+    Portada main= new Portada(man);
 
     public static void main(String[] args) {
 

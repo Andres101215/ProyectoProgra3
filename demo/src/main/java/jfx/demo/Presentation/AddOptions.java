@@ -31,6 +31,9 @@ public class AddOptions extends Application {
 
         @Override
         public void start(Stage primaryStage) throws Exception {
+
+            Image iconImage = new Image("file:" + "demo/src/prograIconos/logoUptc.png");
+            primaryStage.getIcons().add(iconImage);
             primaryStage.setTitle("Buscar Palabras");
             primaryStage.setWidth(500);
             primaryStage.setHeight(300);
@@ -51,7 +54,10 @@ public class AddOptions extends Application {
                 letraButton.setOnAction(event -> {
                     // Lógica para la letra seleccionada
                     String letraSeleccionada = ((Button) event.getSource()).getText();
-                    
+                    LetterTable lT = new LetterTable(man, letraSeleccionada);
+                    lT.mostrarVentana();
+                    primaryStage.close();
+
                 });
 
                 rowContainer.getChildren().add(letraButton);
@@ -69,11 +75,14 @@ public class AddOptions extends Application {
                 letrasButtons.getChildren().add(rowContainer);
             }
 
+
             // VBox principal que contiene todos los elementos
             VBox root = new VBox(10);
             root.setPadding(new Insets(10));
             root.setAlignment(Pos.CENTER);  // Centrar el VBox principal
             root.getChildren().addAll(mensajeLabel, o, letrasButtons);
+
+
 
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
@@ -89,5 +98,6 @@ public class AddOptions extends Application {
             e.printStackTrace();
         }
     }
-    }
 
+
+    }
