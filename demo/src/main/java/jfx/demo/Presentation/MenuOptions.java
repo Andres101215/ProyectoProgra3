@@ -117,12 +117,20 @@ public class MenuOptions extends Application {
         botonFlotante2.setOnAction(event -> {
             AddOptions addOptions = new AddOptions(man);
             addOptions.mostrarVentana();
+            primaryStage.close();
 
 
         });
 
         // Crear la escena y mostrarla
-        Scene scene = new Scene(root, 700, 600); // Usar el BorderPane como nodo raíz
+        Scene scene = new Scene(root, 900, 600); // Usar el BorderPane como nodo raíz
+
+        primaryStage.setOnCloseRequest(event -> {
+            Portada pt= new Portada(man);
+            pt.mostrarVentana();
+        });
+
+
         scene.getStylesheets().add(new File("demo/src/main/styles/tabla.css").toURI().toString());
         primaryStage.setScene(scene);
         primaryStage.show();

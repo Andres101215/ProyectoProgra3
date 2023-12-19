@@ -49,6 +49,7 @@ public class LetterTable extends Application {
         translateColumn.setCellValueFactory(new PropertyValueFactory<>("translate"));
 
         tabla.getColumns().addAll(IdColumn, wordColumn, definitionColumn, translateColumn);
+        tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tabla.setItems(tableWords);
 
         // Agregar el TableView al centro del BorderPane
@@ -71,12 +72,19 @@ public class LetterTable extends Application {
 
         botonFlotante.setOnAction(event -> {
 
+            AddOptions ad= new AddOptions(man);
+            ad.mostrarVentana();
             primaryStage.close();
 
         });
 
+        Scene scene = new Scene(root, 700, 600);
+        primaryStage.setOnCloseRequest(event -> {
+            AddOptions ad= new AddOptions(man);
+            ad.mostrarVentana();
+            primaryStage.close();
+        });
 
-        Scene scene = new Scene(root, 1000, 600);
         scene.getStylesheets().add(new File("demo/src/main/styles/tabla.css").toURI().toString());
         primaryStage.setScene(scene);
         primaryStage.show();
