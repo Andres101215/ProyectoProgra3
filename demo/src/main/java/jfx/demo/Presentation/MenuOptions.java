@@ -2,6 +2,7 @@ package jfx.demo.Presentation;
 
 import java.io.File;
 import java.util.Optional;
+
 import Controller.Management;
 import Logic.Word;
 import javafx.application.Application;
@@ -35,13 +36,12 @@ public class MenuOptions extends Application {
 
 
     public MenuOptions(Management man) {
-        this.man=man;
+        this.man = man;
     }
 
     @Override
-    public void start(Stage primaryStage){
-        int code=man.generateAscciCode(man.ConvertFirstToUppercase("andres"));
-        man.addBinaryTreeWord(man.generatePosition(man.ConvertFirstToUppercase("andres")),man.createWord(code,"andres","esto quiere decir que tiene muchas cosas que decir","translate"));
+    public void start(Stage primaryStage) {
+
         BorderPane root = new BorderPane();
 
         primaryStage.setTitle("Diccionario");
@@ -65,7 +65,7 @@ public class MenuOptions extends Application {
         translateColumn.setCellValueFactory(new PropertyValueFactory<>("translate"));
 
 
-        tabla.getColumns().addAll(IdColumn,wordColumn,definitionColumn,translateColumn);
+        tabla.getColumns().addAll(IdColumn, wordColumn, definitionColumn, translateColumn);
 
         // Agregar columna de botones
 
@@ -90,7 +90,7 @@ public class MenuOptions extends Application {
         botonFlotante2.setGraphic(iconobuscar);
 
         StackPane stackPane = new StackPane();
-        stackPane.getChildren().addAll(tabla, botonFlotante,botonFlotante2);
+        stackPane.getChildren().addAll(tabla, botonFlotante, botonFlotante2);
         StackPane.setAlignment(botonFlotante, Pos.BOTTOM_RIGHT);
         StackPane.setAlignment(botonFlotante2, Pos.BOTTOM_RIGHT);
         StackPane.setMargin(botonFlotante, new Insets(0, 10, 58, 0));
@@ -98,8 +98,14 @@ public class MenuOptions extends Application {
         root.setCenter(stackPane); // Agregar la StackPane al centro del BorderPane
 
         botonFlotante.setOnAction(event -> {
+            int code = man.generateAscciCode(man.ConvertFirstToUppercase("andres"));
+            Word newWord = man.createWord(code, "andres", "esto quiere decir que tiene muchas cosas que decir", "translate");
 
+            // Agregar la nueva palabra a la lista y actualizar la tabla
+            tableWords.add(newWord);
+            man.addBinaryTreeWord(man.generatePosition(man.ConvertFirstToUppercase(newWord.getWord())), newWord);
         });
+
 
         botonFlotante2.setOnAction(event -> {
             AddOptions addOptions = new AddOptions(man);
@@ -157,11 +163,11 @@ public class MenuOptions extends Application {
                     tabla.getItems().remove(word);
                     alert.setContentText("Se elimino correctamente");
                 }
-                });
+            });
 
             btnModificar.setOnAction(event -> {
                 Word word = getTableView().getItems().get(getIndex());
-                modifyWord testTabla = new modifyWord(man.generatePosition(word.getWord()),word,man);
+                modifyWord testTabla = new modifyWord(man.generatePosition(word.getWord()), word, man);
 
                 Stage testTablaStage = new Stage();
                 testTabla.start(testTablaStage);
@@ -186,6 +192,7 @@ public class MenuOptions extends Application {
             }
         }
     }
+
     public void mostrarVentana() {
         Stage stage = new Stage();
         try {

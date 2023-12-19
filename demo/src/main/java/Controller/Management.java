@@ -41,8 +41,14 @@ public class Management{
         return aux1-65;
     }
     public String ConvertFirstToUppercase(String word){
+        if (word == null || word.isEmpty()) {
+            return word;
+        }
+
         char primeraLetra = Character.toUpperCase(word.charAt(0));
-        return primeraLetra + word.substring(1);
+        String restoPalabra = word.substring(1).toLowerCase();
+
+        return primeraLetra + restoPalabra;
     }
     public boolean containCharacterSpecial(String str) {
         int x = 0;
@@ -87,10 +93,7 @@ public class Management{
     public ArrayList<Word> returnlistByletter(int pos){
         return list[pos].listInsort();
     }
-    public boolean modifyword(int pos,int id,Word word1){
-        list[pos].modifyinfo(list[pos].findNode(findInfoById(pos,id)),word1);
-        return true;
-    }
+
     public ArrayList<Word> returnlist(){
         ArrayList<Word> newlistWords = new ArrayList<>();
         for (int i = 0; i < list.length; i++) {
@@ -98,13 +101,14 @@ public class Management{
         }
         return newlistWords;
     }
-    public ArrayList<Word> returnword(){
-        ArrayList<Word> newlistWords = new ArrayList<>();
-        for (int i = 0; i < list.length; i++) {
-            newlistWords.addAll(list[i].listInsort());
-        }
-        return newlistWords;
-    }
 
+    public boolean validateWord(String aux){
+        for (Word word3:returnlist()) {
+            if(word3.getWord().equalsIgnoreCase(aux)){
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

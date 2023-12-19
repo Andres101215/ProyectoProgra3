@@ -25,7 +25,7 @@ public class modifyWord extends Application {
     private String word = "";
     private String description = "";
     private String translate = "";
-
+    private int id=0;
     private Management man;
     private Label mensajeLabel = new Label();
     private Label messageLabel = new Label();
@@ -102,21 +102,18 @@ public class modifyWord extends Application {
         HBox.setHgrow(translateTextField, Priority.ALWAYS);
 
         enviarButton.setOnAction(e -> {
+            id=Integer.parseInt(IdTextField.getText());
             word = wordTextField.getText();
             description = definitionTextField.getText();
             translate = translateTextField.getText();
 
-            if (word.isBlank() && description.isBlank() && translate.isBlank()) {
+            if (word.isBlank() || description.isBlank() || translate.isBlank()) {
                 showErrorTimeline(wordTextField, messageLabel,
-                        "Debe ingresar la palabra.");
-                showErrorTimeline(definitionTextField, messageLabel,
-                        "Debe ingresar la definicion");
-                showErrorTimeline(translateTextField, messageLabel,
-                        "Debe ingresar la traduccion");
+                        "Debe ingresar todos los datos ");
                 return;
             } else if (!man.containCharacterSpecial(word)) {
                 showErrorTimeline(wordTextField, messageLabel,
-                        "Palabra invalida, no ndebe tener caracteres especiales.");
+                        "Palabra invalida, no debe tener caracteres especiales.");
                 return;
             } else if (word.isBlank()) {
                 showErrorTimeline(wordTextField, messageLabel,
@@ -131,6 +128,10 @@ public class modifyWord extends Application {
                 showErrorTimeline(definitionTextField, messageLabel,
                         "Debe ingresar la definicion");
                 return;
+            }else if(man.validateWord(word) && !words.getWord().equalsIgnoreCase(word)){
+                showErrorTimeline(definitionTextField, messageLabel,
+                        "Esta palabra ya se encuentra registrada");
+                return;
             }
             // Crear un diálogo de confirmación
             Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
@@ -141,16 +142,18 @@ public class modifyWord extends Application {
             Optional<ButtonType> result = confirmDialog.showAndWait();
 
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                // Modificar el grupo existente con los nuevos valores
-
+                int aux= man.generatePosition(man.ConvertFirstToUppercase(word));
+                Word wordaux=new Word(man.generateAscciCode(word),man.ConvertFirstToUppercase(word),description,translate);
+                man.deleteBinaryTreeWord(man.generatePosition(words.getWord()), words.getId());
+                man.addBinaryTreeWord(aux,wordaux);
                 IdTextField.clear();
                 wordTextField.clear();
                 definitionTextField.clear();
                 translateTextField.clear();
 
-                primaryStage.close();
                 MenuOptions testTabla = new MenuOptions(man);
                 testTabla.start(new Stage());
+                primaryStage.close();
 
             }
         });
@@ -161,9 +164,7 @@ public class modifyWord extends Application {
         // Organizar la disposición de elementos en la escena
         BorderPane root = new BorderPane();
         root.setCenter(mainVBox);
-        root.getStyleClass().
-
-                add("Window-background");
+        root.getStyleClass().add("Window-background");
 
         Scene scene = new Scene(root, 1000, 600); // Ajustar el tamaño de la ventana según tus necesidades
         scene.getStylesheets().add(new File("demo/src/main/styles/modifyWord.css").toURI().toString());
