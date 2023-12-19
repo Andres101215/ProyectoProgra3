@@ -130,6 +130,7 @@ public class AddWord extends Application {
 
             if (result.isPresent() && result.get() == ButtonType.OK) {
 
+
                 Word newWord = new Word(id, word, description, translate);
                 man.addBinaryTreeWord((man.generateAscciCode(String.valueOf(word.charAt(0)))-65), newWord);
                 MenuOptions mO= new MenuOptions(man);
