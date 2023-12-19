@@ -167,6 +167,12 @@ public class modifyWord extends Application {
         root.getStyleClass().add("Window-background");
 
         Scene scene = new Scene(root, 1000, 600); // Ajustar el tamaño de la ventana según tus necesidades
+
+        primaryStage.setOnCloseRequest(event -> {
+            MenuOptions mn= new MenuOptions(man);
+            mn.mostrarVentana();
+        });
+
         scene.getStylesheets().add(new File("demo/src/main/styles/modifyWord.css").toURI().toString());
         primaryStage.setScene(scene);
         primaryStage.show();

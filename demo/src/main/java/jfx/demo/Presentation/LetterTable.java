@@ -78,8 +78,12 @@ public class LetterTable extends Application {
 
         });
 
-
         Scene scene = new Scene(root, 700, 600);
+        primaryStage.setOnCloseRequest(event -> {
+            MenuOptions mn= new MenuOptions(man);
+            mn.mostrarVentana();
+        });
+
         scene.getStylesheets().add(new File("demo/src/main/styles/tabla.css").toURI().toString());
         primaryStage.setScene(scene);
         primaryStage.show();

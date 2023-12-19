@@ -52,7 +52,7 @@ public class Portada extends Application {
         });
 
         // Agregar un texto en la mitad
-        Label middleTextLabel = new Label("Andres Felipe Puentes y Luis Esteban Robelto");
+        Label middleTextLabel = new Label("Andres Felipe Puentes\n Luis Esteban Robelto");
         middleTextLabel.getStyleClass().add("middle-text");
 
         StackPane stackPane = new StackPane();
@@ -75,5 +75,14 @@ public class Portada extends Application {
         layout.setAlignment(javafx.geometry.Pos.CENTER);
 
         return layout;
+    }
+
+    public void mostrarVentana() {
+        Stage stage = new Stage();
+        try {
+            start(stage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

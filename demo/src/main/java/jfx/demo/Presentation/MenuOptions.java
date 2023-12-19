@@ -120,6 +120,13 @@ public class MenuOptions extends Application {
 
         // Crear la escena y mostrarla
         Scene scene = new Scene(root, 700, 600); // Usar el BorderPane como nodo raíz
+
+        primaryStage.setOnCloseRequest(event -> {
+            Portada pt= new Portada(man);
+            pt.mostrarVentana();
+        });
+
+
         scene.getStylesheets().add(new File("demo/src/main/styles/tabla.css").toURI().toString());
         primaryStage.setScene(scene);
         primaryStage.show();

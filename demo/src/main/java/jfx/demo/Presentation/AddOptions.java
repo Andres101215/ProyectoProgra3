@@ -33,7 +33,7 @@ public class AddOptions extends Application {
         @Override
         public void start(Stage primaryStage) throws Exception {
 
-            Image iconImage = new Image("file:" + "demo/src/prograIconos/logoUptc.png");
+            Image iconImage = new Image("file:" + "demo/src/prograIconos/libro.png");
             primaryStage.getIcons().add(iconImage);
             primaryStage.setTitle("Buscar Palabras\n\n");
             primaryStage.setWidth(500);
