@@ -39,7 +39,7 @@ public class MenuOptions extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage){
         int code=man.generateAscciCode(man.ConvertFirstToUppercase("andres"));
         man.addBinaryTreeWord(man.generatePosition(man.ConvertFirstToUppercase("andres")),man.createWord(code,"andres","esto quiere decir que tiene muchas cosas que decir","translate"));
         BorderPane root = new BorderPane();
@@ -78,8 +78,8 @@ public class MenuOptions extends Application {
 
         ImageView iconoAgregar = new ImageView(new Image("file:" + "demo/src/prograIconos/anadir.png"));
         ImageView iconobuscar = new ImageView(new Image("file:" + "demo/src/prograIconos/lupa.png"));
-        iconoAgregar.setFitWidth(22);
-        iconoAgregar.setFitHeight(22);
+        iconoAgregar.setFitWidth(32);
+        iconoAgregar.setFitHeight(32);
         iconobuscar.setFitWidth(22);
         iconobuscar.setFitHeight(22);
         Button botonFlotante = new Button();
@@ -161,9 +161,12 @@ public class MenuOptions extends Application {
             btnModificar.setOnAction(event -> {
                 Word word = getTableView().getItems().get(getIndex());
                 modifyWord testTabla = new modifyWord(man.generatePosition(word.getWord()),word,man);
+
                 Stage testTablaStage = new Stage();
                 testTabla.start(testTablaStage);
-                testTablaStage.close();
+                Stage stage = (Stage) btnModificar.getScene().getWindow();
+                stage.close();
+
             });
 
             // Configura el contenido de las celdas para mostrar los botones

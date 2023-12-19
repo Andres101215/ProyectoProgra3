@@ -2,6 +2,7 @@ package jfx.demo.Presentation;
 
 import java.io.File;
 import java.util.Optional;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import Controller.Management;
@@ -30,19 +31,19 @@ public class modifyWord extends Application {
     private Label messageLabel = new Label();
 
     private Word words;
-    private int id = 0;
     private int pos = 0;
 
-    public modifyWord(int pos, Word word,Management man) {
+    public modifyWord(int pos, Word word, Management man) {
         this.pos = pos;
-        this.id = id; // Inicializa el id
-        this.man=man;
+        this.man = man;
+        this.words = word;
     }
+
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Modify Group");
+        primaryStage.setTitle("Modificar Palabra");
         // Configurar el ícono de la ventana
-        Image iconImage = new Image("file:" + "src\\prograIconos\\descarga.jpg");
+        Image iconImage = new Image("file:" + "demo/src/prograIconos/descarga.jpg");
         primaryStage.getIcons().add(iconImage);
 
         VBox mainVBox = new VBox(15); // Espacio entre elementos
@@ -50,13 +51,13 @@ public class modifyWord extends Application {
 
         Label IDLabel = new Label("Id*");
         Label wordLabel = new Label("Palabra*");
-        Label definitionLabel = new Label("Definition*  ");
+        Label definitionLabel = new Label("Definicion*  ");
         Label translateLabel = new Label("Traduccion*");
 
         // Crear los campos de entrada de datos
 
         TextField IdTextField = new TextField();
-        IdTextField.setPromptText("Palabra:");
+        IdTextField.setPromptText("Id:");
         IdTextField.setText(String.valueOf(words.getId()));
         IdTextField.setEditable(false);
 
@@ -83,6 +84,7 @@ public class modifyWord extends Application {
         messageLabelHBox.setAlignment(Pos.CENTER);
 
         mainVBox.getChildren().addAll(
+                new HBox(IDLabel, IdTextField),
                 new HBox(wordLabel, wordTextField),
                 new HBox(definitionLabel, definitionTextField), // Agrupa etiqueta y TextField
                 new HBox(translateLabel, translateTextField),
@@ -104,7 +106,7 @@ public class modifyWord extends Application {
             description = definitionTextField.getText();
             translate = translateTextField.getText();
 
-            if (word.isBlank() || description.isBlank() || translate.isBlank()) {
+            if (word.isBlank() && description.isBlank() && translate.isBlank()) {
                 showErrorTimeline(wordTextField, messageLabel,
                         "Debe ingresar la palabra.");
                 showErrorTimeline(definitionTextField, messageLabel,
@@ -112,7 +114,7 @@ public class modifyWord extends Application {
                 showErrorTimeline(translateTextField, messageLabel,
                         "Debe ingresar la traduccion");
                 return;
-            } else if (man.containCharacterSpecial(word)) {
+            } else if (!man.containCharacterSpecial(word)) {
                 showErrorTimeline(wordTextField, messageLabel,
                         "Palabra invalida, no ndebe tener caracteres especiales.");
                 return;
@@ -121,62 +123,53 @@ public class modifyWord extends Application {
                         "Debe ingresar la palabra.");
                 return;
 
-            }else if(translate.isBlank()) {
+            } else if (translate.isBlank()) {
                 showErrorTimeline(translateTextField, messageLabel,
                         "Debe ingresar la traduccion");
                 return;
-            }else if(description.isBlank()) {
+            } else if (description.isBlank()) {
                 showErrorTimeline(definitionTextField, messageLabel,
                         "Debe ingresar la definicion");
                 return;
             }
-        // Crear un diálogo de confirmación
-        Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmDialog.setTitle("Confirmation");
-        confirmDialog.setHeaderText("Are you sure to save the changes?");
-        confirmDialog.setContentText("If you confirm, the changes will be saved to the database.");
+            // Crear un diálogo de confirmación
+            Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmDialog.setTitle("Confirmation");
+            confirmDialog.setHeaderText("Are you sure to save the changes?");
+            confirmDialog.setContentText("If you confirm, the changes will be saved to the database.");
 
-        Optional<ButtonType> result = confirmDialog.showAndWait();
+            Optional<ButtonType> result = confirmDialog.showAndWait();
 
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            // Modificar el grupo existente con los nuevos valores
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                // Modificar el grupo existente con los nuevos valores
 
-            IdTextField.clear();
-            wordTextField.clear();
-            definitionTextField.clear();
-            translateTextField.clear();
+                IdTextField.clear();
+                wordTextField.clear();
+                definitionTextField.clear();
+                translateTextField.clear();
 
+                primaryStage.close();
+                MenuOptions testTabla = new MenuOptions(man);
+                testTabla.start(new Stage());
 
-            MenuOptions testTabla = new MenuOptions(man);
+            }
+        });
 
-          //  Stage testTablaStage = new Stage();
-            //testTabla.start(testTablaStage);
-           // primaryStage.close();
-        }
-    });
+        mainVBox.getStyleClass().add("container");
+        mainVBox.setMaxSize(500, 500);
 
-        mainVBox.getStyleClass().
-
-    add("container");
-        mainVBox.setMaxSize(500,500);
-
-    // Organizar la disposición de elementos en la escena
-    BorderPane root = new BorderPane();
+        // Organizar la disposición de elementos en la escena
+        BorderPane root = new BorderPane();
         root.setCenter(mainVBox);
         root.getStyleClass().
 
-    add("Window-background");
+                add("Window-background");
 
-    Scene scene = new Scene(root, 1000, 600); // Ajustar el tamaño de la ventana según tus necesidades
-        scene.getStylesheets().
-
-    add(new File("demo/src/main/styles/modifyWord.css").
-
-    toURI().toString());
-    // archivo CSS
+        Scene scene = new Scene(root, 1000, 600); // Ajustar el tamaño de la ventana según tus necesidades
+        scene.getStylesheets().add(new File("demo/src/main/styles/modifyWord.css").toURI().toString());
         primaryStage.setScene(scene);
         primaryStage.show();
-}
+    }
 
     private void mostrarError(TextField textField, String mensaje) {
         textField.getStyleClass().add("error-field");
