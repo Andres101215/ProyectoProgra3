@@ -98,4 +98,13 @@ public class Management{
         }
         return newlistWords;
     }
+    public ArrayList<Word> returnword(){
+        ArrayList<Word> newlistWords = new ArrayList<>();
+        for (int i = 0; i < list.length; i++) {
+            newlistWords.addAll(list[i].listInsort());
+        }
+        return newlistWords;
+    }
+
+
 }
