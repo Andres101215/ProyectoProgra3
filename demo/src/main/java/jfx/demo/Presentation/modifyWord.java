@@ -2,7 +2,6 @@ package jfx.demo.Presentation;
 
 import java.io.File;
 import java.util.Optional;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import Controller.Management;
@@ -26,7 +25,7 @@ public class modifyWord extends Application {
     private String description = "";
     private String translate = "";
 
-    private Management man = new Management();
+    private Management man;
     private Label mensajeLabel = new Label();
     private Label messageLabel = new Label();
 
@@ -34,11 +33,11 @@ public class modifyWord extends Application {
     private int id = 0;
     private int pos = 0;
 
-    public modifyWord(int pos, Word word) {
+    public modifyWord(int pos, Word word,Management man) {
         this.pos = pos;
         this.id = id; // Inicializa el id
+        this.man=man;
     }
-
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Modify Group");
@@ -173,9 +172,7 @@ public class modifyWord extends Application {
 
     add(new File("demo/src/main/styles/modifyWord.css").
 
-    toURI().
-
-    toString());
+    toURI().toString());
     // archivo CSS
         primaryStage.setScene(scene);
         primaryStage.show();
