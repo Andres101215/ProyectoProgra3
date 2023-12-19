@@ -49,13 +49,4 @@ public class Word {
         this.translate = translate;
     }
 
-    @Override
-    public String toString() {
-        return "Word{" +
-                "id='" + id + '\'' +
-                ", word='" + word + '\'' +
-                ", definition='" + definition + '\'' +
-                ", translate='" + translate + '\'' +
-                '}';
-    }
 }

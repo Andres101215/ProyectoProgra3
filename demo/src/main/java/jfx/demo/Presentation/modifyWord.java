@@ -2,7 +2,6 @@ package jfx.demo.Presentation;
 
 import java.io.File;
 import java.util.Optional;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import Controller.Management;
