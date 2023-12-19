@@ -1,0 +1,33 @@
+.Window-background{
+    -fx-background-color: #f5ebb1;
+}
+
+.container-project{
+    -fx-background-color: #f5ebb1;
+}
+
+
+
+.button-enviar {
+    -fx-background-color: #000000;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #F4D03F;
+    -fx-pref-width: 400px;
+    -fx-pref-height: 40px;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    
+}
+
+/* Estilo en hover */
+.button-enviar:hover {
+    -fx-background-color: rgb(238, 214, 0);
+    -fx-text-fill: rgb(0, 0, 0);
+}
+
+.container {
+    -fx-background-color: rgb(255, 255, 255); /* Color de fondo del contenedor (blanco en este ejemplo) */
+    -fx-background-radius: 2%; /* Redondeo de bordes horizontal y vertical del 5% */
+    -fx-font-size: 14px; /* Tamaño de la fuente de 20px */
+}

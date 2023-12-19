@@ -157,7 +157,11 @@ public class MenuOptions extends Application {
                 });
 
             btnModificar.setOnAction(event -> {
-
+                Word word = getTableView().getItems().get(getIndex());
+                modifyWord testTabla = new modifyWord(man.generatePosition(word.getWord()),word);
+                Stage testTablaStage = new Stage();
+                testTabla.start(testTablaStage);
+                testTablaStage.close();
             });
 
             // Configura el contenido de las celdas para mostrar los botones
