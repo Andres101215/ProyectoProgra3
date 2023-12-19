@@ -137,8 +137,12 @@ public class AddWord extends Application {
 
             if (result.isPresent() && result.get() == ButtonType.OK) {
 
+<<<<<<< HEAD
                 word = man.ConvertFirstToUppercase(word);
                 int aux= man.generatePosition(man.ConvertFirstToUppercase(word));
+=======
+
+>>>>>>> b2d5a98a45351a38e704c7fed7654092659a45fa
                 Word newWord = new Word(id, word, description, translate);
                 man.addBinaryTreeWord(aux,newWord);
                 MenuOptions mO= new MenuOptions(man);

@@ -52,7 +52,7 @@ public class Portada extends Application {
         });
 
         // Agregar un texto en la mitad
-        Label middleTextLabel = new Label("Andres Felipe Puentes\n Luis Esteban Robelto");
+        Label middleTextLabel = new Label("Andres Felipe Puentes-202127995\n Luis Esteban Robelto-202128044");
         middleTextLabel.getStyleClass().add("middle-text");
 
         StackPane stackPane = new StackPane();
