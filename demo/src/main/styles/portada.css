@@ -15,8 +15,6 @@
     -fx-effect: dropshadow(gaussian, rgb(255, 232, 28), 10, 0, 0, 0);
 }
 
-
-
 .middle-text {
     -fx-font-family: "Times New Roman";
     -fx-font-weight: bold;
