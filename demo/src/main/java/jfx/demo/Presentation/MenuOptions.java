@@ -25,7 +25,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -162,7 +161,7 @@ public class MenuOptions extends Application {
 
             btnModificar.setOnAction(event -> {
                 Word word = getTableView().getItems().get(getIndex());
-                modifyWord testTabla = new modifyWord(man.generatePosition(word.getWord()),word);
+                modifyWord testTabla = new modifyWord(man.generatePosition(word.getWord()),word,man);
                 Stage testTablaStage = new Stage();
                 testTabla.start(testTablaStage);
                 testTablaStage.close();
