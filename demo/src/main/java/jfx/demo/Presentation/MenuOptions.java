@@ -207,11 +207,6 @@ public class MenuOptions extends Application {
             }
         }
     }
-
-    public void addButton(Management man, Word newWord){
-
-    }
-
     public void mostrarVentana() {
         Stage stage = new Stage();
         try {

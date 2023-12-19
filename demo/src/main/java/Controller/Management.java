@@ -1,7 +1,7 @@
 package Controller;
 import BinaryTreeLogic.BinaryTree;
-import BinaryTreeLogic.TreeNode;
 import Logic.Word;
+import java.util.regex.Pattern;
 
 import java.util.ArrayList;
 
@@ -54,20 +54,14 @@ public class Management{
     public boolean containCharacterSpecial(String str) {
         int x = 0;
         for (int i = 0; i < str.length(); i++) {
-            if (String.valueOf(str.charAt(i)).equals("1")
-                    || String.valueOf(str.charAt(i)).equals("2")
-                    || String.valueOf(str.charAt(i)).equals("3")
-                    || String.valueOf(str.charAt(i)).equals("4")
-                    || String.valueOf(str.charAt(i)).equals("5")
-                    || String.valueOf(str.charAt(i)).equals("6")
-                    || String.valueOf(str.charAt(i)).equals("7")
-                    || String.valueOf(str.charAt(i)).equals("8")
-                    || String.valueOf(str.charAt(i)).equals("9")
-                    || String.valueOf(str.charAt(i)).equals("0")) {
+            if (Character.isDigit(str.charAt(i))) {
                 x++;
             }
         }
-        return str.matches("^[a-zA-Z0-9\\s]+$") && x == 0;
+
+        // Permitir letras, espacios, números, tildes y la letra 'ñ'
+        String regex = "^[\\p{L}0-9\\s]+$";
+        return Pattern.matches(regex, str) && x == 0;
     }
 
     public Word createWord(int id, String word1, String definition, String translate){

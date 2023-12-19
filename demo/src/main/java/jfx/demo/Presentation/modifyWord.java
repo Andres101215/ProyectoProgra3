@@ -131,6 +131,14 @@ public class modifyWord extends Application {
                 showErrorTimeline(definitionTextField, messageLabel,
                         "Esta palabra ya se encuentra registrada");
                 return;
+            }else if(!man.containCharacterSpecial(translate)){
+                showErrorTimeline(wordTextField, messageLabel,
+                        "Traduccion inválida, no debe tener caracteres especiales.");
+                return;
+            }else if(!man.containCharacterSpecial(description)){
+                showErrorTimeline(wordTextField, messageLabel,
+                        "Definicion inválida, no debe tener caracteres especiales.");
+                return;
             }
             // Crear un diálogo de confirmación
             Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);

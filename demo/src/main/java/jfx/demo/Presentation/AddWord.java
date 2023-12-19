@@ -54,15 +54,14 @@ public class AddWord extends Application {
 
         TextField wordTextField = new TextField();
         wordTextField.setPromptText("Palabra:");
-        wordTextField.setText("Ingrese la palabra~");
+
 
         TextField definitionTextField = new TextField();
         definitionTextField.setPromptText("Definicion:");
-        definitionTextField.setText("Ingrese la definición~");
 
         TextField translateTextField = new TextField();
         translateTextField.setPromptText("Traduccion:");
-        translateTextField.setText("Ingrese la traducción~");
+
 
         Button enviarButton = new Button("Enviar");
 
@@ -119,6 +118,14 @@ public class AddWord extends Application {
                 showErrorTimeline(definitionTextField, messageLabel,
                         "Esta palabra ya se encuentra registrada");
                 return;
+            }else if(!man.containCharacterSpecial(translate)){
+                showErrorTimeline(wordTextField, messageLabel,
+                        "Traduccion inválida, no debe tener caracteres especiales.");
+                return;
+            }else if(!man.containCharacterSpecial(description)){
+                showErrorTimeline(wordTextField, messageLabel,
+                        "Definicion inválida, no debe tener caracteres especiales.");
+                return;
             }
 
             Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
@@ -130,12 +137,13 @@ public class AddWord extends Application {
 
             if (result.isPresent() && result.get() == ButtonType.OK) {
 
+                word = man.ConvertFirstToUppercase(word);
+                int aux= man.generatePosition(man.ConvertFirstToUppercase(word));
                 Word newWord = new Word(id, word, description, translate);
-                man.addBinaryTreeWord((man.generateAscciCode(String.valueOf(word.charAt(0)))-65), newWord);
+                man.addBinaryTreeWord(aux,newWord);
                 MenuOptions mO= new MenuOptions(man);
                 mO.mostrarVentana();
                 primaryStage.close();
-
             }
         });
 
